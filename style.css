@@ -23,7 +23,16 @@ header {
     align-items: center;
     flex-direction: column;
     margin: auto;
-    width: 400px;
+    width: 340px;
+}
+
+.display {
+    width: 340px;
+    text-align: right;
+    padding: 22px 12px;
+    background-color: black;
+    font-size: 32px;
+    border-radius: 6px;
 }
 
 .btns {
@@ -36,7 +45,7 @@ header {
 button {
     font-size: 22px;
     color: whitesmoke;
-    width: 100px;
+    width: 85px;
     height: 65px;
     margin: auto;
     border-radius: 6px;
@@ -44,7 +53,7 @@ button {
 }
 
 .all-clear {
-    width: 200px;
+    width: 170px;
     background-color: #a52a2a;
 }
 
@@ -53,7 +62,7 @@ button {
 }
 
 .equals {
-    width: 200px;
+    width: 170px;
     background-color: green;
 }
 
