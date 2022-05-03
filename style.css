@@ -6,8 +6,61 @@
 body {
     background-color: #772953;
     color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
 }
 
 header {
     text-align: center;
+}
+
+.calculator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    width: 400px;
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+button {
+    font-size: 22px;
+    color: whitesmoke;
+    width: 100px;
+    height: 65px;
+    margin: auto;
+    border-radius: 6px;
+    background-color: #000000;
+}
+
+.all-clear {
+    width: 200px;
+    background-color: #a52a2a;
+}
+
+.delete {
+    background-color: #292e77;
+}
+
+.equals {
+    width: 200px;
+    background-color: green;
+}
+
+.operator {
+    background-color: #282828;
+}
+
+button:active {
+    color: #775e29;
 }
