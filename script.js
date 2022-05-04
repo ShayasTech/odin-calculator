@@ -7,7 +7,6 @@ let calculator = {
     readyForSecondOperand: false,
     displayValue: "0"
 };
-console.table(calculator);
 updateDisplay();
 
 let buttons = document.querySelectorAll("button");
@@ -29,6 +28,12 @@ buttons.forEach(button => {
         if (button.className === 'dot') {
             inputDot(target);
             updateDisplay();
+        }
+        if (button.className == 'operator') {
+            sign = e.target.value;
+            operate(sign);
+            updateDisplay();
+            console.table(calculator);
         }
     });
 });
@@ -57,6 +62,9 @@ function deleteBack() {
 }
 
 function inputNumber(e) {
+    if (calculator.operator != null && calculator.displayValue != '') {
+        calculator.displayValue = '';
+    }
     calculator.displayValue = (calculator.displayValue == '0') ? calculator.displayValue = e : calculator.displayValue += e;
 }
 
@@ -65,5 +73,17 @@ function inputDot(e) {
         return
     } else {
         calculator.displayValue += e;
+    }
+}
+
+
+//SomeThing Went Wrong
+function operate(e) {
+    if (calculator.readyForSecondOperand === true) {
+        calculator.secondOperand = displayValue;
+    } else {
+        calculator.operator = e;
+        calculator.firstOperand = displayValue;
+        calculator.readyForSecondOperand = true;
     }
 }
