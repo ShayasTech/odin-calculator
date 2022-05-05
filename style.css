@@ -60,13 +60,13 @@ button {
     background-color: #292e77;
 }
 
-.equals {
-    width: 170px;
-    background-color: green;
-}
-
 .operator {
     background-color: #282828;
+}
+
+#equals {
+    width: 170px;
+    background-color: green;
 }
 
 button:active {
