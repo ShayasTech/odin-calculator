@@ -63,6 +63,10 @@ function allClear() {
 }
 
 function inputDot(dot) {
+    if (calculator.waitingForSecondOperator) {
+        calculator.displayValue = '0.';
+        calculator.waitingForSecondOperator = false;
+    }
     if (!calculator.displayValue.includes('.')) {
         calculator.displayValue += dot;
     }
@@ -74,9 +78,36 @@ function deleteLastEntry() {
 
 function handleOperation(nextOperator) {
     let inputValue = parseFloat(calculator.displayValue);
+    if (calculator.operator && calculator.waitingForSecondOperator) {
+        calculator.operator = nextOperator;
+        return;
+    }
     if (calculator.firstOperand == null && !isNaN(inputValue)) {
         calculator.firstOperand = inputValue;
+    } else if (calculator.operator) {
+        let result = calculate(calculator.firstOperand, inputValue, calculator.operator);
+        calculator.displayValue = `${parseFloat(result.toFixed(7))}`;
+        calculator.firstOperand = result;
     }
     calculator.waitingForSecondOperator = true;
     calculator.operator = nextOperator;
+}
+
+function calculate(firstOperand, secondOperand, operator) {
+    if (operator == '+') {
+        return firstOperand + secondOperand;
+    } else if (operator == '-') {
+        return firstOperand - secondOperand;
+    } else if (operator == '*') {
+        return firstOperand * secondOperand;
+    } else if (operator == '/') {
+        if (secondOperand === 0) {
+            return 'ERROR';
+        }
+        return firstOperand / secondOperand;
+    } else if (operator == '%') {
+        return firstOperand % secondOperand;
+    }
+    return secondOperand;
+
 }
